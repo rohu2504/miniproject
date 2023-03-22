@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Fake News📰 Detection System</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<!-- Till above its the CSS part -->
+</head>
+
+<body>
+ <div class="login">
+	<h1>MISLEADING INFO📰 Detector</h1>
+
+    <form action="{{ url_for('predict')}}" method="POST">
+    	<textarea  name="message" rows="6" cols="50" required="required" style="font-size: 18pt"></textarea>
+		<br> </br>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+         <button type="reset" class="block">Reset</button>
+
+        	<div class="results">
+<!-- Till above division it is the login page
+which takes news as input from user and names it  as "message"
+sends it to back-end which is the flask model which returns the predicted value 
+And the predicted value is procesed in below division -->
+	
+	{% if prediction %}
+	<p><b><font size="5" color="white">{{prediction}}</font></b></p>
+	{% endif %}
+	<!-- if prediction is returned as fake..then prints mislead..else not -->
+
+	</div>
+    </form>
+</div>
